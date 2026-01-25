@@ -14,6 +14,8 @@ grpOriginalContent
 ├── tmrPulse
 ├── btnInvisibleTrigger
 ├── icoChevron
+├── btnCircleBackground
+├── SavingMessage
 ├── Container1
 │   ├── optimal_icon
 │   ├── ausverkauft_icon
@@ -45,8 +47,8 @@ grpOriginalContent
 ├── ddSystem
 ├── sharepoint_Image1
 ├── NumberOfItems
-├── Searchcon1 / SearchIcon1
-├── TextSearchBox
+├── SearchIcon1
+├── TextSearchBox1
 ├── lblAppName1
 ├── IconResetFilters
 ├── RectQuickActionBar1
@@ -58,7 +60,7 @@ grpOriginalContent
     ├── lblListLocation
     ├── lblSKUPill
     ├── btnListPlus
-    ├── btnMinus
+    ├── btnListMinus
     ├── txtListQty
     ├── btnStockQuantityBadge
     ├── lblListTitle
@@ -68,7 +70,6 @@ grpOriginalContent
     ├── IconCopy
     ├── IconCopy_1
     ├── btnBackgroundMinusTransparentTrigger
-    ├── Icon_Minus_Grid
     ├── Icon_Minus_Grid
     ├── btnBackgroundMinus
     ├── btnOutLabel
@@ -81,3 +82,6 @@ grpOriginalContent
     ├── btnStockCountLabel_Grid
     ├── Subtitle1
     └── btnCardBackground
+
+
+    ```
