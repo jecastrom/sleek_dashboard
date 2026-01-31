@@ -33,22 +33,42 @@ GLOBAL ARCHITECTURAL CONSTRAINTS (THE "DO NOT BREAK" RULES):
 
 
 
+```Markdown
+Here is **Prompt 3**. This is the most complex logical change in this batch, so I have structured it carefully.
+
+We are moving the "Damage/Issue" reporting from a vague global checkbox to specific **Per-Item** flags. This ensures that if you receive 10 items and 1 is broken, you know exactly *which* one.
+
+### The Prompt to Copy & Paste
+
+> "We are refactoring the **Damage/Issue Reporting** logic in **'Wareneingang prüfen' (Flow 2)**.
+>
+> **The Goal:**
+> Move the error reporting from the global Step 3 checkbox to a granular **Per-Item** reporting system in Step 2.
+>
+> **1. Data Structure Update:**
+> *   Update the `ReceiptItem` (or `addedItems`) interface to include optional fields:
+>     *   `isDamaged`: boolean
+>     *   `issueNotes`: string (for "Wrong product" or details)
+>
+> **2. Step 2 UI Updates (The Item Table):**
+> *   Add a new Action Button or Toggle in the table row (e.g., an 'Alert' icon or button labeled "Problem melden").
+> *   **Interaction:** When clicked, expand a small section **below** that specific row (Accordion style) containing:
+>     *   **Checkbox:** "Ware beschädigt" (Mark as Damaged).
+>     *   **Text Input:** "Abweichung / Falscher Artikel" (Placeholder: "z.B. Falsche Farbe, Defekt...").
+>
+> **3. Step 3 UI Updates (Cleanup):**
+> *   **Remove** the global "Ware beschädigt" checkbox from the Step 3 Summary entirely.
+>
+> **4. Logic Updates (Auto-Status Calculation):**
+> *   Update the `handleSave` status calculation logic.
+> *   **New Priority Rule:** Check the items list first.
+> *   **IF** ANY item has `isDamaged === true` OR has text in `issueNotes` $\rightarrow$ Set Global Status to **"Falsch geliefert"**.
+> *   **(Else)** Continue with the existing Quantity checks (Teillieferung/Überlieferung/Gebucht).
+>
+> **CRITICAL WARNINGS:**
+> *   **CONSTRAINT 1 (State):** Ensure that toggling the 'Problem' fields does **NOT** reset the 'Received Quantity'. They must be managed independently.
+> *   **CONSTRAINT 2 (Layout):** Ensure the "Expand" section does not break the table width. It should span across the columns below the main row.
+> *   **CONSTRAINT 3 (Integrity):** Do not modify `FULL_INVENTORY`."
+
+
 ```
-**Reviewing Current Stage**
-
-I am now reviewing the current stage, making sure I am aligned with the agreed-upon "Execution Plan". Input hygiene is assumed to be complete. Next, I need to focus on identifying the next step.
-
-
-**Focusing on Per-Line Logic**
-
-I'm now zeroing in on Step 3, the per-line issue logic. This refactor of "Wareneingang prüfen" demands a shift from global checks to item-specific checks within Flow 2. My goal is to add a "Problem melden" toggle/button for each row, revealing "Beschädigt" checkbox and a text input for notes, storing this item state. I need to update the save handler to incorporate these new flags, while being careful to maintain the quantity data, protect FULL_INVENTORY, and to keep the portal logic working.
-I've started drafting the prompt with this refactoring as the core context, focusing on the UI additions and how they will display in the expanded or modal row options.
-
-
-**Optimizing UI Presentation**
-
-I'm now refining the UI presentation, considering that the table is becoming crowded. A popover approach for quick entry of issue details seems preferable to directly embedding the fields in the row. My immediate focus is on suggesting a "Toggle" button, possibly a warning icon, that expands to show the popover when clicked. This approach directly addresses the user's initial requirement of an "Expand button per row labeled 'Problem melden'" without disrupting the layout. I am also working on Tasks 2-4 and polishing final details.
-
-
-
-```markdown
