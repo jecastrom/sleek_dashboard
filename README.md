@@ -33,41 +33,4 @@ GLOBAL ARCHITECTURAL CONSTRAINTS (THE "DO NOT BREAK" RULES):
 
 
 
-```Markdown
-Here is **Prompt 5**, the final step of this upgrade cycle.
-
-This moves the Purchase Order generation from a "Dummy Text File" to a professional-looking **PDF**.
-
-*Note: I have instructed the AI to use `jspdf` (a standard library). If the AI Studio environment cannot install new packages, it might revert to a "Print Window" approach, which is also a valid fallback.*
-
-### The Prompt to Copy & Paste
-
-> "I need to upgrade the **PDF Generation** in **'Bestellung erstellen' (Flow 1)**.
->
-> **The Task:**
-> Replace the current simple text-file generation (`.txt`) with a proper **PDF Generator**.
->
-> **1. Library / Approach:**
-> *   Please use **`jspdf`** (and `jspdf-autotable` if available) to generate the file client-side.
-> *   *If you cannot add packages in this environment, implement a robust 'Print-friendly HTML' solution that opens the order in a new clean window for printing to PDF.*
->
-> **2. The PDF Content & Layout:**
-> The generated file should look like a professional Purchase Order (Bestellung):
-> *   **Header:** Large bold title **"BESTELLUNG"**.
-> *   **Meta Data:**
->     *   **Bestell Nr:** [Value]
->     *   **Datum:** [Current Date]
->     *   **Lieferant:** [Supplier Name]
-> *   **Item Table:** A clean table with headers: **Pos | Artikel / SKU | Menge**.
-> *   **Footer:** "Generiert von Inventar Pro".
->
-> **3. Implementation Logic:**
-> *   Update the `generatePOPdf` function.
-> *   It should return (or trigger the download of) a `Blob` with MIME type `application/pdf`.
-> *   The filename should be `Bestellung_[ID].pdf`.
->
-> **CRITICAL WARNINGS:**
-> *   **CONSTRAINT 1 (Workflow):** Ensure the "PDF Herunterladen" button in the Step 3 Success Overlay triggers this new function.
-> *   **CONSTRAINT 2 (Integrity):** Do not break the 'Save to Mock Data' logic. The PDF generation is a side-effect, not the main data save.
-> *   **CONSTRAINT 3:** Do not modify `FULL_INVENTORY`."
 ```
