@@ -1,4 +1,4 @@
-# Dost Inventar Pro
+
 
 Instructions for the Google AI Studio Builder
 
